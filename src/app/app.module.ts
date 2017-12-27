@@ -12,14 +12,16 @@ import { MatIconModule } from '@angular/material';
 // hero表單
 // import { HeroFormComponent } from './hero-form.component';
 import { HeroFormReactiveComponent } from './reactive/hero-form-reactive.component';
-import { ForbiddenValidatorDirective } from './shared/forbidden-name.directive';
+import { HomeComponent } from './home/home.component';
+import { UserRegisterComponent } from './user/user-register/user-register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     // HeroFormComponent,
     HeroFormReactiveComponent,
-    ForbiddenValidatorDirective,
+    UserRegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,4 +34,6 @@ import { ForbiddenValidatorDirective } from './shared/forbidden-name.directive';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor() {}
+}
