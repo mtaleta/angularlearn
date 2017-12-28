@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
+// import { AppRoutingModule } from './app-routing.module';
+// router
+import { RoutingModule } from './app.routes';
+import { HttpModule,JsonpModule ,Http } from '@angular/http';
 
 import { AppComponent } from './app.component';
 // import { MatButtonModule } from '@angular/material';
@@ -14,6 +17,13 @@ import { MatIconModule } from '@angular/material';
 import { HeroFormReactiveComponent } from './reactive/hero-form-reactive.component';
 import { HomeComponent } from './home/home.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
+import { SocialChannelComponent } from './home/social-channel/social-channel.component';
+import { SitestatComponent } from './home/sitestat/sitestat.component';
+import { ForgetPwdComponent } from './user/forget-pwd/forget-pwd.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
+
+// import { ForgetPwdService } from './user/forget-pwd/forget-pwd.service'
+
 
 @NgModule({
   declarations: [
@@ -22,15 +32,22 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
     // HeroFormComponent,
     HeroFormReactiveComponent,
     UserRegisterComponent,
+    SocialChannelComponent,
+    SitestatComponent,
+    ForgetPwdComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
+    RoutingModule,
     BrowserAnimationsModule,
     SharedMaterialModule,
     MatIconModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    // ForgetPwdService
   ],
   bootstrap: [AppComponent]
 })

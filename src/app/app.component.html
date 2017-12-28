@@ -1,10 +1,19 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div class="container">
+  <!--The content below is only a placeholder and can be replaced.-->
+  <div style="text-align:center">
+    <nav>
+      <a routerLink="/home" routerLinkActive="active">首頁</a>
+      <a routerLink="/user" routerLinkActive="active">註冊</a>
+      <a routerLink="/login" routerLinkActive="active">登入</a>
+      <!-- <a routerLink="/forget" routerLinkActive="active">忘記密碼</a> -->
+    </nav>
+    <!-- <app-user-login></app-user-login> -->
+    <!-- <app-forget-pwd></app-forget-pwd> -->
     <!-- <app-hero-form></app-hero-form> -->
-    <app-user-register></app-user-register>
-  <app-home></app-home>
-  <app-hero-form-reactive></app-hero-form-reactive>
-  <h1>
+    <!-- <app-user-register></app-user-register>
+  <app-home></app-home> -->
+    <!-- <app-hero-form-reactive></app-hero-form-reactive> -->
+    <!--<h1>
     Welcome to {{ title }}!
   </h1>
   <button>Hello world</button>
@@ -29,7 +38,7 @@
   <div>
     這是加上warn顏色的ICON
     <mat-icon color="warn">warning</mat-icon>
+  </div> -->
   </div>
 </div>
-
 <router-outlet></router-outlet>
