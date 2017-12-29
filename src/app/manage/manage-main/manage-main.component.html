@@ -1,3 +1,15 @@
-<p>
-  manage-main works!
-</p>
+<div class="manage-main-container">
+  <div class="row">
+    <div class="col-sm-9">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="col-sm-3">
+      <div class="list-group">
+        <a class="list-group-item"><span class="badge">10000</span>文章管理</a>
+        <a class="list-group-item"><span class="badge">200</span>評論管理</a>
+        <a class="list-group-item"><span class="badge">100</span>使用者管理</a>
+        <a routerLink="sysparam" class="list-group-item">系統設置</a>
+      </div>
+    </div>
+  </div>
+</div>

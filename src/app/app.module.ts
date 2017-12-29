@@ -25,6 +25,9 @@ import { SocialChannelComponent } from './home/social-channel/social-channel.com
 import { SitestatComponent } from './home/sitestat/sitestat.component';
 
 import { ManageMainComponent } from './manage/manage-main/manage-main.component';
+import { PostTableComponent } from './manage/post-table/post-table.component';
+import { PostTableService } from './manage/post-table/service/post-table.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +38,8 @@ import { ManageMainComponent } from './manage/manage-main/manage-main.component'
     UserLoginComponent,
     SocialChannelComponent,
     SitestatComponent,
-    ManageMainComponent
+    ManageMainComponent,
+    PostTableComponent
   ],
   imports: [
     BrowserModule,
@@ -48,8 +52,10 @@ import { ManageMainComponent } from './manage/manage-main/manage-main.component'
     HttpClientModule,
     HomeModule,
     RoutingModule,
+
   ],
   providers: [
+    PostTableService
     // ForgetPwdService
   ],
   bootstrap: [AppComponent]
