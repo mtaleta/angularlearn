@@ -7,7 +7,10 @@ import {Post} from './post';
 @Injectable()
 export class PostTableService {
   private getPostsURL = 'https://jsonplaceholder.typicode.com/posts';
-
+  
+  // private getPostsURL = 'mock-data/postlist-mock.json';
+  
+  
   constructor(private http: Http) {}
 
   getPosts(): Observable<Post[]> {
@@ -15,23 +18,4 @@ export class PostTableService {
       .map((response: Response) => response.json());
   }
 }
-//   public delURL: string="";
-//   public toEditURL: string="";
-//   constructor(public http: Http) { }
 
-//   public getPostTable(dataURL:string){
-//     return this.http.get(dataURL)
-//       .map((res:Response) => res.json())
-//       .catch((error:any) => Observable.throw(error || 'Server error'));
-//   }
-
-// public del(postId: number):Observable<any>{
-//     return this.http.delete(this.delURL)
-//       .map((res: Response) => res.json());
-//   }
-
-//   public toEdit(postId: number):Observable<any>{
-//     return this.http.get(this.toEditURL)
-//       .map((res: Response) => res.json());
-//   }
-// }
