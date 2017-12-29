@@ -15,21 +15,23 @@ import {HttpClient} from '@angular/common/http';
 })
 
 export class ForgetPwdComponent implements OnInit {
-  errorMessage: any;
-  constructor(private http: Http) {}
 
-  data: any;
+  results:string[];
+  constructor(private http: HttpClient) {}
+
   forgetForm: FormGroup;
 
   forget = { email: '' };
 
   ngOnInit(): void {
-    const Url = '/src/app/mock-data/forget-pwd-mock.json';
-    this.http.get(Url)
-    .subscribe(
-      data => this.data = data,
-      error =>  this.errorMessage = <any>error
-    );
+    // json位置為404
+    const Url = 'app/mock-data/forget-pwd-mock.json';
+    this.http.get(Url).subscribe(
+      data => {
+        console.log(data + '1')
+        this.results = data['message']
+        console.log(this.results + '2')
+      });
 
     this.forgetForm = new FormGroup({
       'email': new FormControl(this.forget.email, [
