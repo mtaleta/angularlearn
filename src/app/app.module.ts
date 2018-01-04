@@ -27,6 +27,13 @@ import { SitestatComponent } from './home/sitestat/sitestat.component';
 import { ManageMainComponent } from './manage/manage-main/manage-main.component';
 import { PostTableComponent } from './manage/post-table/post-table.component';
 import { PostTableService } from './manage/post-table/service/post-table.service';
+import { LoginComponent } from './login/login.component';
+
+import { AuthService } from './core/auth.service';
+import { TodoComponent } from './todo/todo.component';
+// Todo Mock API
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryTodoDbService } from './todo/todo-data';
 
 @NgModule({
   declarations: [
@@ -39,7 +46,9 @@ import { PostTableService } from './manage/post-table/service/post-table.service
     SocialChannelComponent,
     SitestatComponent,
     ManageMainComponent,
-    PostTableComponent
+    PostTableComponent,
+    LoginComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
@@ -52,10 +61,12 @@ import { PostTableService } from './manage/post-table/service/post-table.service
     HttpClientModule,
     HomeModule,
     RoutingModule,
-
+    InMemoryWebApiModule.forRoot(InMemoryTodoDbService),
   ],
   providers: [
-    PostTableService
+    PostTableService,
+    // AuthService
+    {provide: 'auth', useClass: AuthService},
     // ForgetPwdService
   ],
   bootstrap: [AppComponent]

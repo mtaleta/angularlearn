@@ -1,12 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 import { ManageMainComponent } from './manage-main/manage-main.component';
 import { PostTableComponent } from './post-table/post-table.component';
 
+import { manageRoutes } from './manage.routes';
+
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(manageRoutes)
   ],
-  declarations: [ManageMainComponent, PostTableComponent]
+  declarations: [
+    ManageMainComponent, 
+    PostTableComponent
+  ],
+  exports: [
+    ManageMainComponent
+  ]
 })
 export class ManageModule { }
