@@ -30,10 +30,13 @@ import { PostTableService } from './manage/post-table/service/post-table.service
 import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './core/auth.service';
-import { TodoComponent } from './todo/todo.component';
+// import { TodoComponent } from './todo/todo.component';
+import { TodoModule } from './todo/todo.module';
 // Todo Mock API
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryTodoDbService } from './todo/todo-data';
+// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryTodoDbService } from './todo/todo-data';
+// import { TodoFooterComponent } from './todo/todo-footer/todo-footer.component';
+// import { TodoHeaderComponent } from './todo/todo-header/todo-header.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,9 @@ import { InMemoryTodoDbService } from './todo/todo-data';
     ManageMainComponent,
     PostTableComponent,
     LoginComponent,
-    TodoComponent
+    // TodoComponent,
+    // TodoFooterComponent,
+    // TodoHeaderComponent 
   ],
   imports: [
     BrowserModule,
@@ -61,7 +66,8 @@ import { InMemoryTodoDbService } from './todo/todo-data';
     HttpClientModule,
     HomeModule,
     RoutingModule,
-    InMemoryWebApiModule.forRoot(InMemoryTodoDbService),
+    TodoModule
+    // InMemoryWebApiModule.forRoot(InMemoryTodoDbService),
   ],
   providers: [
     PostTableService,

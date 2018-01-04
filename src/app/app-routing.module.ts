@@ -7,17 +7,17 @@ import { HomeComponent } from './home/home.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { LoginComponent } from './login/login.component';
-import { TodoComponent } from './todo/todo.component';
+// import { TodoComponent } from './todo/todo.component';
 
 const routes : Routes = [
 	{
 		path: '',
-		redirectTo: 'todo',
+		redirectTo: 'login',
 		pathMatch: 'full'
 	},
 	{
 		path: 'todo',
-		component: TodoComponent
+		redirectTo: 'todo'
 	},
 	{
 		path: 'login',
