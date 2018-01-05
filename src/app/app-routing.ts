@@ -3,13 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ForgetPwdComponent } from './user/forget-pwd/forget-pwd.component'; 
-import { HomeComponent } from './home/home.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { LoginComponent } from './login/login.component';
 // import { TodoComponent } from './todo/todo.component';
 
+
 const routes : Routes = [
+<<<<<<< HEAD:src/app/app-routing.module.ts
 	{
 		path: '',
 		redirectTo: 'login',
@@ -29,10 +30,11 @@ const routes : Routes = [
 	// 	redirectTo:'posts',
 	// 	pathMatch:'full'
 	// },
+=======
+>>>>>>> heros:src/app/app-routing.ts
 	{
     path:'home',
-    component: HomeComponent
-		// loadChildren: './home/home.module#HomeModule'
+    redirectTo: 'home'
 	},
 	{
 		path:'user',
@@ -46,6 +48,7 @@ const routes : Routes = [
 		path:'login',
 		component: UserLoginComponent
 	},
+<<<<<<< HEAD:src/app/app-routing.module.ts
 	{ 
 		path: 'manage', 
 		loadChildren:'./manage/manage.module#ManageModule'
@@ -58,6 +61,8 @@ const routes : Routes = [
 	// 	path:'**',//fallback router must in the last
 	// 	loadChildren:'./home/home.module#HomeModule'
 	// }
+=======
+>>>>>>> heros:src/app/app-routing.ts
 ];
 
 @NgModule({
