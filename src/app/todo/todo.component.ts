@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Todo } from './todo.model';
 import { TodoService } from './todo.service';
 
+import { Router, ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -9,13 +10,23 @@ import { TodoService } from './todo.service';
   providers: [TodoService]
 })
 export class TodoComponent implements OnInit {
+  // filterTodos: any;
   todos: Todo[] = [];
   desc: string = '';
 
-  constructor(private service: TodoService) { }
+  constructor(
+    @Inject('todoService') 
+    private service,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.getTodos();
+    // this.getTodos();
+    this.route.paramMap.forEach((params: Params) => {
+      let filter = params['filter'];
+      this.filterTodos(filter);
+    })
   }
 
   addTodo(){
@@ -43,25 +54,38 @@ export class TodoComponent implements OnInit {
       });
   }
 
-  removeTodo(todo: Todo) {
+  removeTodo(todo: Todo):Promise<void> {
     const i = this.todos.indexOf(todo);
-    this.service
+    return this.service
       .deleteTodoById(todo.id)
       .then(() => {
         this.todos = [
           ...this.todos.slice(0,i),
           ...this.todos.slice(i+1)
         ];
+        return null;
       });
-  }
-
-  getTodos(): void {
-    this.service
-      .getTodos()
-      .then(todos => this.todos = [...todos]);
   }
 
   onTextChanges(value) {
     this.desc = value;
+  }
+
+  filterTodos(filter: string): void {
+    this.service
+      .filterTodos(filter)
+      .then(todos => this.todos = [...todos])
+  }
+
+  toggleAll() {
+    Promise.all(this.todos.map(todo => this.toddleTodo(todo)));
+  }
+
+  clearCompleted(){
+    const completed_todos = this.todos.filter(todo => todo.completed === true);
+    const active_todos = this.todos.filter(todo => todo.completed === false);
+    Promise.all(completed_todos.map(todo => this.service.deleteTodoById(todo.id)))
+    // const todos = this.todos.filter(todo => todo.completed === true);
+    // todos.forEach(todo => this.removeTodo(todo));
   }
 }

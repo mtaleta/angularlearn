@@ -16,13 +16,14 @@ const routes : Routes = [
 		pathMatch: 'full'
 	},
 	{
-		path: 'todo',
-		redirectTo: 'todo'
-	},
-	{
 		path: 'login',
 		component: LoginComponent
 	},
+	{
+		path: 'todo',
+		redirectTo: 'todo/ALL'
+	},
+	
 	// {
 	// 	path:'',
 	// 	redirectTo:'posts',
