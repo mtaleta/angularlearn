@@ -12,9 +12,10 @@
       name="username"
       placeholder="輸入帳號"
     />{{usernameRef.errors | json}}
+    <!-- |是管道操作符，用於將前面的結果通過管道輸出成另一種格式 -->
       <div *ngIf="usernameRef.errors?.required">this is required</div>
       <div *ngIf="usernameRef.errors?.minlength">should be at least 3 charctors</div>
-      <!-- |是管道操作符，用於將前面的結果通過管道輸出成另一種格式 -->
+      <div *ngIf="auth?.hasError">{{auth.errMsg}}</div>
     <input [(ngModel)]="password" type="password"
       required #passwordRef="ngModel" 
       name="password"

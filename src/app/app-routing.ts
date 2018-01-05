@@ -6,16 +6,16 @@ import { ForgetPwdComponent } from './user/forget-pwd/forget-pwd.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { LoginComponent } from './login/login.component';
-// import { TodoComponent } from './todo/todo.component';
+import { TodoComponent } from './todo/todo.component';
 
+import { AuthGuardService } from './core/auth-guard.service';
 
 const routes : Routes = [
-<<<<<<< HEAD:src/app/app-routing.module.ts
-	{
-		path: '',
-		redirectTo: 'login',
-		pathMatch: 'full'
-	},
+	// {
+	// 	path: '',
+	// 	redirectTo: 'login',
+	// 	pathMatch: 'full'
+	// },
 	{
 		path: 'login',
 		component: LoginComponent
@@ -30,8 +30,6 @@ const routes : Routes = [
 	// 	redirectTo:'posts',
 	// 	pathMatch:'full'
 	// },
-=======
->>>>>>> heros:src/app/app-routing.ts
 	{
     path:'home',
     redirectTo: 'home'
@@ -45,12 +43,12 @@ const routes : Routes = [
 		component: ForgetPwdComponent
 	},
 	{
-		path:'login',
+		path:'logins',
 		component: UserLoginComponent
 	},
-<<<<<<< HEAD:src/app/app-routing.module.ts
 	{ 
-		path: 'manage', 
+		path: 'manage',
+		canActivate: [AuthGuardService],
 		loadChildren:'./manage/manage.module#ManageModule'
 	},
 	// {
@@ -61,8 +59,6 @@ const routes : Routes = [
 	// 	path:'**',//fallback router must in the last
 	// 	loadChildren:'./home/home.module#HomeModule'
 	// }
-=======
->>>>>>> heros:src/app/app-routing.ts
 ];
 
 @NgModule({

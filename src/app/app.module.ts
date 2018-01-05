@@ -4,7 +4,7 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 // router
 import { RoutingModule } from './app-routing';
 import { HttpModule, JsonpModule , Http } from '@angular/http';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 // import { MatButtonModule } from '@angular/material';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,13 +22,14 @@ import { PostTableService } from './manage/post-table/service/post-table.service
 import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './core/auth.service';
-// import { TodoComponent } from './todo/todo.component';
+
 import { TodoModule } from './todo/todo.module';
 // Todo Mock API
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { InMemoryTodoDbService } from './todo/todo-data';
 // import { TodoFooterComponent } from './todo/todo-footer/todo-footer.component';
 // import { TodoHeaderComponent } from './todo/todo-header/todo-header.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -37,35 +38,21 @@ import { TodoModule } from './todo/todo.module';
     UserRegisterComponent,
     ForgetPwdComponent,
     UserLoginComponent,
-<<<<<<< HEAD
-    SocialChannelComponent,
-    SitestatComponent,
-    ManageMainComponent,
-    PostTableComponent,
     LoginComponent,
-    // TodoComponent,
-    // TodoFooterComponent,
-    // TodoHeaderComponent 
-=======
-
->>>>>>> heros
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RoutingModule,
-<<<<<<< HEAD
-    TodoModule
-    // InMemoryWebApiModule.forRoot(InMemoryTodoDbService),
-=======
     ReactiveFormsModule,
     HomeModule,
+    TodoModule,
     // BrowserAnimationsModule,
     // SharedMaterialModule,
     // MatIconModule,
-    // HttpClientModule,
->>>>>>> heros
+    HttpClientModule,
+    CoreModule
   ],
   providers: [
     PostTableService,
