@@ -31,6 +31,7 @@ import { TodoModule } from './todo/todo.module';
 // import { TodoHeaderComponent } from './todo/todo-header/todo-header.component';
 import { CoreModule } from './core/core.module';
 import { MdlModule } from '@angular-mdl/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { MdlModule } from '@angular-mdl/core';
     ReactiveFormsModule,
     HomeModule,
     TodoModule,
-    // BrowserAnimationsModule,
+    BrowserAnimationsModule,
     // SharedMaterialModule,
     // MatIconModule,
     HttpClientModule,

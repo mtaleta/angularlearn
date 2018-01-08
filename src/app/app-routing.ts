@@ -11,18 +11,19 @@ import { TodoComponent } from './todo/todo.component';
 import { AuthGuardService } from './core/auth-guard.service';
 
 const routes : Routes = [
-	// {
-	// 	path: '',
-	// 	redirectTo: 'login',
-	// 	pathMatch: 'full'
-	// },
+	{
+		path: '',
+		redirectTo: 'login',
+		pathMatch: 'full'
+	},
 	{
 		path: 'login',
 		component: LoginComponent
 	},
 	{
 		path: 'todo',
-		redirectTo: 'todo/ALL'
+		redirectTo: 'todo/ALL',
+		canLoad: [AuthGuardService]
 	},
 	
 	// {
