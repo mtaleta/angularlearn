@@ -1,64 +1,57 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Todo } from './todo.model';
-import { TodoService } from './todo.service';
-
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { TodoService } from './todo.service';
+import { Todo } from '../domain/entities';
+
 @Component({
-  selector: 'app-todo',
   templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.css'],
-  providers: [TodoService]
+  styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-  // filterTodos: any;
-  todos: Todo[] = [];
   desc: string = '';
+  todos : Todo[] = [];
 
   constructor(
-    @Inject('todoService') 
-    private service,
+    @Inject('todoService') private service,
     private route: ActivatedRoute,
-    private router: Router
-  ) { }
-
+    private router: Router) {}
   ngOnInit() {
-    // this.getTodos();
-    this.route.paramMap.forEach((params: Params) => {
+    this.route.params.forEach((params: Params) => {
       let filter = params['filter'];
       this.filterTodos(filter);
-    })
+    });
+  }
+
+  onTextChanges(value) {
+    this.desc = value;
   }
 
   addTodo(){
     this.service
       .addTodo(this.desc)
       .then(todo => {
-        this.todos = [
-          ...this.todos, todo
-        ];
+        this.todos = [...this.todos, todo];
         this.desc = '';
       });
-    // this.todos = this.service.addTodo(this.desc);
-    // this.desc = '';
   }
-  toddleTodo(todo: Todo) {
+  toggleTodo(todo: Todo): Promise<void> {
     const i = this.todos.indexOf(todo);
-    this.service
+    return this.service
       .toggleTodo(todo)
       .then(t => {
         this.todos = [
           ...this.todos.slice(0,i),
           t,
           ...this.todos.slice(i+1)
-        ];
+          ];
+        return null;
       });
   }
-
-  removeTodo(todo: Todo):Promise<void> {
+  removeTodo(todo: Todo): Promise<void>  {
     const i = this.todos.indexOf(todo);
     return this.service
       .deleteTodoById(todo.id)
-      .then(() => {
+      .then(()=> {
         this.todos = [
           ...this.todos.slice(0,i),
           ...this.todos.slice(i+1)
@@ -66,26 +59,18 @@ export class TodoComponent implements OnInit {
         return null;
       });
   }
-
-  onTextChanges(value) {
-    this.desc = value;
-  }
-
-  filterTodos(filter: string): void {
+  filterTodos(filter: string): void{
     this.service
       .filterTodos(filter)
-      .then(todos => this.todos = [...todos])
+      .then(todos => this.todos = [...todos]);
   }
-
-  toggleAll() {
-    Promise.all(this.todos.map(todo => this.toddleTodo(todo)));
+  toggleAll(){
+    Promise.all(this.todos.map(todo => this.toggleTodo(todo)));
   }
-
   clearCompleted(){
     const completed_todos = this.todos.filter(todo => todo.completed === true);
     const active_todos = this.todos.filter(todo => todo.completed === false);
     Promise.all(completed_todos.map(todo => this.service.deleteTodoById(todo.id)))
-    // const todos = this.todos.filter(todo => todo.completed === true);
-    // todos.forEach(todo => this.removeTodo(todo));
+      .then(() => this.todos = [...active_todos]);
   }
 }

@@ -1,6 +1,27 @@
-<div class="container">
+<mdl-layout mdl-layout-fixed-header mdl-layout-header-seamed>
+    <mdl-layout-header>
+      <mdl-layout-header-row>
+        <mdl-layout-title>Awesome Todos</mdl-layout-title>
+        <mdl-layout-spacer></mdl-layout-spacer>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link">Logout</a>
+        </nav>
+      </mdl-layout-header-row>
+    </mdl-layout-header>
+    <mdl-layout-drawer>
+      <mdl-layout-title>Title</mdl-layout-title>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link">Link</a>
+      </nav>
+    </mdl-layout-drawer>
+    <mdl-layout-content class="content">
+      <router-outlet></router-outlet>
+    </mdl-layout-content>
+  </mdl-layout>
+ <!-- <div class="container"> -->
   <!--The content below is only a placeholder and can be replaced.-->
-  <div style="text-align:center">
+  <!-- <div style="text-align:center"> 
     <nav>
       <a routerLink="/home" routerLinkActive="active">首頁</a>
       <a routerLink="/user" routerLinkActive="active">註冊</a>
@@ -10,5 +31,5 @@
       <a routerLink="/todo" routerLinkActive="active">Todo</a>
     </nav>
   </div>
-</div>
-<router-outlet></router-outlet>
+</div> -->
+

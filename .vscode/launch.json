@@ -1,0 +1,38 @@
+{
+  // 使用 IntelliSense 以得知可用的屬性。
+  // 暫留以檢視現有屬性的描述。
+  // 如需詳細資訊，請瀏覽: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:4200",
+      "sourceMaps": true,
+      "runtimeArgs": [
+        "--disable-session-crashed-bubble",
+        "--disable-infobars"
+      ],
+      "webRoot": "${workspaceRoot}/src",
+      "diagnosticLogging": true,
+      "userDataDir": "C\\temp\\chromeDummyDir",
+      "sourceMapPathOverrides": {
+        "webpack:///C:*":"C:/*"
+      }
+    },
+    {
+      "name": "Attach to Chrome, with sourcemaps",
+      "type": "chrome",
+      "request": "attch",
+      "port": 9222,
+      "sourceMaps": true,
+      "diagnosticLogging": true,
+      "webRoot": "${workspaceRoot}/src",
+      "sourceMapPathOverrides": {
+        "webpack:///C:*":"C:/*"
+      }
+    }
+  ]
+}

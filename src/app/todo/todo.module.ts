@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
-import { routing} from './todo.routes'
+import { TodoRoutingModule } from './todo-routing.module'
 
 import { TodoComponent } from './todo.component';
 import { TodoFooterComponent } from './todo-footer/todo-footer.component';
@@ -12,12 +12,15 @@ import { TodoService } from './todo.service';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 
+import { MdlModule } from '@angular-mdl/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     HttpModule,
-    routing
+    TodoRoutingModule,
+    MdlModule
   ],
   declarations: [
     TodoComponent,
@@ -28,6 +31,6 @@ import { TodoListComponent } from './todo-list/todo-list.component';
   ],
   providers: [
     {provide: 'todoService', useClass: TodoService}
-  ]
+    ],
 })
 export class TodoModule {}

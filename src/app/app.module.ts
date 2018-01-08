@@ -30,6 +30,7 @@ import { TodoModule } from './todo/todo.module';
 // import { TodoFooterComponent } from './todo/todo-footer/todo-footer.component';
 // import { TodoHeaderComponent } from './todo/todo-header/todo-header.component';
 import { CoreModule } from './core/core.module';
+import { MdlModule } from '@angular-mdl/core';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { CoreModule } from './core/core.module';
     // SharedMaterialModule,
     // MatIconModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    MdlModule
   ],
   providers: [
     PostTableService,

@@ -1,0 +1,34 @@
+{
+  "todos": [
+    {
+      "id": "bf75769b-4810-64e9-d154-418ff2dbf55e",
+      "desc": "getting up",
+      "completed": false,
+      "userId": 1
+    },
+    {
+      "id": "5894a12f-dae1-5ab0-5761-1371ba4f703e",
+      "desc": "have breakfast",
+      "completed": true,
+      "userId": 2
+    },
+    {
+      "id": "0d2596c4-216b-df3d-1608-633899c5a549",
+      "desc": "go to school",
+      "completed": false,
+      "userId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "wang",
+      "password": "1234"
+    },
+    {
+      "id": 2,
+      "username": "peng",
+      "password": "5678"
+    }
+  ]
+}

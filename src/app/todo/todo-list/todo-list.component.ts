@@ -1,13 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Todo } from '../todo.model';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Todo } from '../../domain/entities';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent implements OnInit {
-
+export class TodoListComponent {
   _todos: Todo[] = [];
   @Input()
   set todos(todos:Todo[]){
@@ -20,19 +19,13 @@ export class TodoListComponent implements OnInit {
   @Output() onToggleTodo = new EventEmitter<Todo>();
   @Output() onToggleAll = new EventEmitter<boolean>();
 
-  onToggleAllTriggered() {
-    this.onToggleAll.emit(true);
-  }
-
   onRemoveTriggered(todo: Todo) {
     this.onRemoveTodo.emit(todo);
   }
   onToggleTriggered(todo: Todo) {
     this.onToggleTodo.emit(todo);
   }
-  constructor() { }
-
-  ngOnInit() {
+  onToggleAllTriggered() {
+    this.onToggleAll.emit(true);
   }
-
 }

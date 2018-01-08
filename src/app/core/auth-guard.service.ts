@@ -1,31 +1,32 @@
 import { Injectable, Inject } from '@angular/core';
 import {
   CanActivate,
+  CanActivateChild,
   Router,
   ActivatedRouteSnapshot,
-  RouterStateSnapshot
-} from '@angular/router';
+  RouterStateSnapshot }    from '@angular/router';
 
 @Injectable()
-export class AuthGuardService implements CanActivate {
+export class AuthGuardService implements CanActivate, CanActivateChild {
 
   constructor(private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    //取得訪問的URL
     let url: string = state.url;
+
     return this.checkLogin(url);
   }
   checkLogin(url: string): boolean {
-    //登錄放行
-    if (localStorage.getItem('userId') !== null) {
-      return true;
-    }
-    //儲存要訪問的url到本地端
+    if (localStorage.getItem('userId') !== null) { return true; }
+
+    // Store the attempted URL for redirecting
     localStorage.setItem('redirectUrl', url);
-    //導航到登錄頁
-    this.router.navigate(['/logins']);
-    //返回false 取消導航
+
+    // Navigate to the login page with extras
+    this.router.navigate(['/login']);
     return false;
+  }
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    return this.canActivate(route, state);
   }
 }
